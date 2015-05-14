@@ -148,7 +148,8 @@ return [
 		/*
 		 * THIRD PARTY
 		 */
-		'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+		'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+		'Barryvdh\Cors\CorsServiceProvider',
 
 	],
 
