@@ -14,8 +14,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\EncryptCookies',
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'ThreeAccents\Http\Middleware\VerifyCsrfToken',
+		'Illuminate\View\Middleware\ShareErrorsFromSession'
 	];
 
 	/**
@@ -27,6 +26,9 @@ class Kernel extends HttpKernel {
 		'auth' => 'ThreeAccents\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'ThreeAccents\Http\Middleware\RedirectIfAuthenticated',
+		'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
+		'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
+		'csrf' => 'ThreeAccents\Http\Middleware\VerifyCsrfToken',
 	];
 
 }
