@@ -11,4 +11,10 @@
 |
 */
 
-$router->post('/auth/register', ['as' => 'register', 'uses' => 'Users\AuthController@register']);
+$router->post('api/auth/register', ['as' => 'register', 'uses' => 'Users\AuthController@register']);
+
+$router->get('api/lol', function(){
+    return response()->json([
+        'message' => 'got em!',
+    ]);
+});
