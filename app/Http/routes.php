@@ -11,5 +11,8 @@ $router->group(['prefix' => 'api/v1/'], function($router)
         $router->post('/login', ['as' => 'login', 'uses' => 'User\AuthController@postLogin']);
     });
 
-    $router->get('/companies', ['as' => 'companies', 'uses' => 'Company\CompanyController@getCompanies', 'middleware' => 'jwt.auth']);
+    $router->get('/companies', ['as' => 'companies', 'uses' => 'Company\CompanyController@getCompanies']);
+    $router->get('/{company_slug}/details', ['as' => 'companies', 'uses' => 'Company\CompanyController@getCompany']);
+    $router->get('/{company_slug}/credential-groups', ['as' => 'companies', 'uses' => 'Company\CredentialController@getCredentialGroups']);
+    $router->post('/company/add-company', ['as' => 'add.company', 'uses' => 'Company\CompanyController@postAddCompany']);
 });

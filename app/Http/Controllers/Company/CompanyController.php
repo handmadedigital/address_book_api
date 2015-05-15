@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
+use ThreeAccents\Commands\AddCompanyCommand;
 use ThreeAccents\Companies\Services\CompanyService;
 use ThreeAccents\Http\Controllers\ApiController;
+use ThreeAccents\Http\Requests\AddCompanyRequest;
+use ThreeAccents\Http\Requests\CompanyRequest;
 use ThreeAccents\Http\Transformers\CompanyTransformer;
 
 class CompanyController extends ApiController
@@ -32,8 +35,36 @@ class CompanyController extends ApiController
 
         $this->fractal->parseIncludes($includes);
 
-        $teams = $this->service->getCompanies();
+        $companies = $this->service->getCompanies();
 
-        return  $this->respondWithCollection($teams, new CompanyTransformer);
+        return  $this->respondWithCollection($companies, new CompanyTransformer, 'companies');
+    }
+
+    /**
+     * @param CompanyRequest $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getCompany(CompanyRequest $request)
+    {
+        $includes = Input::get('includes') ?: "";
+
+        $this->fractal->parseIncludes($includes);
+
+        $company = $this->service->getCompany($request->company_slug);
+
+        return  $this->respondWithItem($company, new CompanyTransformer, 'company');
+    }
+
+    /**
+     * @param AddCompanyRequest $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function postAddCompany(AddCompanyRequest $request)
+    {
+        $this->dispatchFrom(AddCompanyCommand::class, $request);
+
+        return $this->respondWithArray([
+            'message' => 'Company was added!'
+        ]);
     }
 }

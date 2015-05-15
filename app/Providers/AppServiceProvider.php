@@ -1,8 +1,11 @@
 <?php namespace ThreeAccents\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use League\Fractal\Manager;
+use League\Fractal\Serializer\JsonApiSerializer;
 
-class AppServiceProvider extends ServiceProvider {
+class AppServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Bootstrap any application services.
@@ -14,6 +17,9 @@ class AppServiceProvider extends ServiceProvider {
 		if ($this->app->environment() == 'local') {
 			$this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
 		}
+
+		$this->app->make(Manager::class)->setSerializer(new JsonApiSerializer());
+
 	}
 
 	/**

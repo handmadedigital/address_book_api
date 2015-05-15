@@ -14,6 +14,13 @@ class DatabaseSeeder extends AbstractSeeder {
 		Model::unguard();
 
 		$this->call('CompaniesTableSeeder');
+		$this->call('CompanyDetailSeederTable');
+		$this->call('StateTableSeeder');
+		$this->call('CompanyCredentialsTableSeeder');
+		$this->call('CredentialOptionsTableSeeder');
+		$this->call('EmployeeTableSeeder');
+		$this->call('OptionCredentialGroupTableSeeder');
+		$this->call('CityTableSeeder');
 	}
 
 }

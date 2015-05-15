@@ -1,6 +1,7 @@
 <?php namespace ThreeAccents\Companies\Services;
 
 use ThreeAccents\Companies\Repositories\CompanyRepository;
+use ThreeAccents\Exceptions\CompanyNoFoundException;
 
 class CompanyService
 {
@@ -23,5 +24,19 @@ class CompanyService
     public function getCompanies()
     {
         return $this->companyRepo->getAll();
+    }
+
+    public function getCompany($slug)
+    {
+        return $this->companyRepo->getBySlug($slug);
+    }
+
+    public function getGroups($slug)
+    {
+        $company = $this->companyRepo->getBySlug($slug);
+
+        if( ! $company) throw new CompanyNoFoundException;
+
+        return $company->credentialGroup;
     }
 }

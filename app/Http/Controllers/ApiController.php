@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
+use League\Fractal\Serializer\JsonApiSerializer;
 
 abstract class ApiController extends BaseController {
 
@@ -62,9 +63,9 @@ abstract class ApiController extends BaseController {
 	 * @param $callback
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	protected function respondWithCollection($collection, $callback)
+	protected function respondWithCollection($collection, $callback, $resource_key)
 	{
-		$resource = new Collection($collection, $callback);
+		$resource = new Collection($collection, $callback, $resource_key);
 
 		$rootScope = $this->fractal->createData($resource);
 
@@ -76,9 +77,9 @@ abstract class ApiController extends BaseController {
 	 * @param $callback
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	protected function respondWithItem($item, $callback)
+	protected function respondWithItem($item, $callback, $resource_key)
 	{
-		$resource = new Item($item, $callback);
+		$resource = new Item($item, $callback, $resource_key);
 
 		$rootScope = $this->fractal->createData($resource);
 
