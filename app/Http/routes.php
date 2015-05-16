@@ -15,5 +15,6 @@ $router->group(['prefix' => 'api/v1/'], function($router)
     $router->get('/{company_slug}/details', ['as' => 'companies', 'uses' => 'Company\CompanyController@getCompany']);
     $router->get('/{company_slug}/credential-groups', ['as' => 'companies', 'uses' => 'Company\CredentialController@getCredentialGroups']);
     $router->post('/company/add-company', ['as' => 'add.company', 'uses' => 'Company\CompanyController@postAddCompany']);
-    $router->post('/{company_slug}/credential/add-credential-group', ['as' => 'add.company', 'uses' => 'Company\CredentialController@postAddCredentialGroup']);
+    $router->post('/{company_slug}/credential/add-credential-group', ['as' => 'add.credential-group', 'uses' => 'Company\CredentialController@postAddCredentialGroup']);
+    $router->post('/{company_slug}/credential/add-credential-option', ['as' => 'add.credential-option', 'uses' => 'Company\CredentialController@postAddCredentialOption]);
 });
