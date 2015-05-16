@@ -20,7 +20,6 @@ class DatabaseSeeder extends AbstractSeeder {
 		$this->call('CredentialOptionsTableSeeder');
 		$this->call('EmployeeTableSeeder');
 		$this->call('OptionCredentialGroupTableSeeder');
-		$this->call('CityTableSeeder');
 	}
 
 }

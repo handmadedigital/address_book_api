@@ -15,12 +15,12 @@ class CreateCompanyDetailsTable extends Migration
         Schema::create('company_details', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned()->index();
-            $table->string('address');
-            $table->integer('city_id')->unsigned()->index();
-            $table->integer('state_id')->unsigned()->index();
-            $table->string('country');
-            $table->integer('zip_code');
-            $table->integer('phone');
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->integer('state_id')->unsigned()->index()->nullable();
+            $table->string('country')->nullable();
+            $table->integer('zip_code')->nullable();
+            $table->integer('phone')->nullable();
             $table->timestamps();
         });
     }

@@ -8,8 +8,9 @@ class CompanyDetailTransformer extends TransformerAbstract
     public function transform(CompanyDetail $detail)
     {
         return [
+            'id' => (int) $detail->id,
             'address' => $detail->address,
-            'city' => $detail->city->name,
+            'city' => $detail->city,
             'state' => $detail->state->name,
             'country' => $detail->country,
             'zip_code' => $detail->zip_code,

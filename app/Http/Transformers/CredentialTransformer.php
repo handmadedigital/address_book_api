@@ -8,6 +8,7 @@ class CredentialTransformer extends TransformerAbstract
     public function transform(Credential $credential)
     {
         return [
+            'id' => (int) $credential->id,
             'credential_option' => $credential->credentialOption->name,
             'credential' => $credential->credential
         ];

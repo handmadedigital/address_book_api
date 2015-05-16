@@ -7,6 +7,8 @@ class CompanyDetailSeederTable extends AbstractSeeder
 
     public function run()
     {
+        $cities = ['weston', 'miami', 'chicago', 'fort lauderdale', 'new york', 'coral springs'];
+
         CompanyDetail::unguard();
 
         CompanyDetail::truncate();
@@ -16,8 +18,8 @@ class CompanyDetailSeederTable extends AbstractSeeder
             CompanyDetail::create([
                 'company_id' => $i,
                 'address' => '1515 n university dr',
-                'city_id' => 1,
-                'state_id' => 5,
+                'city' => $cities[rand(0, 5)],
+                'state_id' => rand(1, 50),
                 'country' => 'usa',
                 'zip_code' => 33071,
                 'phone' => 9543030759

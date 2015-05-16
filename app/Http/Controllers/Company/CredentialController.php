@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
+use ThreeAccents\Commands\AddCredentialGroupCommand;
 use ThreeAccents\Companies\Services\CompanyService;
 use ThreeAccents\Http\Controllers\ApiController;
+use ThreeAccents\Http\Requests\AddCredentialGroupRequest;
 use ThreeAccents\Http\Transformers\CredentialGroupTransformer;
 
 class CredentialController extends ApiController
@@ -25,7 +27,16 @@ class CredentialController extends ApiController
         $credential_groups = $this->companyService->getGroups($company_slug);
 
         return  $this->respondWithCollection($credential_groups, new CredentialGroupTransformer, 'credentialGroups');
+    }
 
+    public function postAddCredentialGroup(AddCredentialGroupRequest $request)
+    {
+        $company = $this->companyService->getCompany($request->company_slug);
 
+        $this->dispatch(new AddCredentialGroupCommand($request->name, $company->id));
+
+        return $this->respondWithArray([
+            'message' => 'Credential group was added'
+        ]);
     }
 }
