@@ -9,8 +9,8 @@ class EmployeeTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $employee->id,
-            'first_name' => $employee->first_name,
-            'last_name' => $employee->last_name,
+            'first_name' => ucwords($employee->first_name),
+            'last_name' => ucwords($employee->last_name),
             'email' => $employee->email,
             'phone_number' => $employee->phone,
         ];

@@ -10,11 +10,12 @@ class CompanyDetailTransformer extends TransformerAbstract
         return [
             'id' => (int) $detail->id,
             'address' => $detail->address,
-            'city' => $detail->city,
-            'state' => $detail->state->name,
-            'country' => $detail->country,
+            'city' => ucwords($detail->city),
+            'state' => ucwords($detail->state->name),
+            'country' => ucwords($detail->country),
             'zip_code' => $detail->zip_code,
             'phone_number' => $detail->phone,
+            'email' => $detail->email,
         ];
     }
 }

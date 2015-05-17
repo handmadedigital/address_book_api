@@ -20,7 +20,7 @@ class CompanyTransformer extends TransformerAbstract
     {
         return [
             'id'   => (int) $company->id,
-            'name' => $company->name,
+            'name' => ucwords($company->name),
             'slug' => $company->slug
         ];
     }
