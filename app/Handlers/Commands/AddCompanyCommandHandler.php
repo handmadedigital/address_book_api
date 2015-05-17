@@ -28,9 +28,9 @@ class AddCompanyCommandHandler
 	 */
 	public function handle(AddCompanyCommand $command)
 	{
-		$company = Company::add($command->getName(), $command->getAddress(), $command->getCity(), $command->getState(), $command->getCountry(), $command->getZipCode(), $command->getPhoneNumber());
+		$company = Company::add($command->getName(), $command->getAddress(), $command->getCity(), $command->getState(), $command->getCountry(), $command->getZipCode(), $command->getPhoneNumber(), $command->getEmail());
 
-		$persisted_company = $this->companyRepo->persist($company);
+		$this->companyRepo->persist($company);
 
 		event(new CompanyWasAdded($company));
 	}

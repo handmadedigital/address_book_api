@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
 
-	protected $fillable = ['name', 'address', 'city', 'state', 'country', 'zip_code', 'phone_number'];
+	protected $fillable = ['name', 'address', 'city', 'state', 'country', 'zip_code', 'phone_number', 'email'];
 
 	/*********************/
 	/*
@@ -13,9 +13,9 @@ class Company extends Model
 	 */
 	/*********************/
 
-	public static function add($name, $address, $city, $state, $country, $zip_code, $phone_number)
+	public static function add($name, $address, $city, $state, $country, $zip_code, $phone_number, $email)
 	{
-		return new static(compact('name', 'address', 'city', 'state', 'country', 'zip_code', 'phone_number'));
+		return new static(compact('name', 'address', 'city', 'state', 'country', 'zip_code', 'phone_number', 'email'));
 	}
 
 	/*********************/

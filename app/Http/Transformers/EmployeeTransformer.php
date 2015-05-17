@@ -12,7 +12,8 @@ class EmployeeTransformer extends TransformerAbstract
             'first_name' => ucwords($employee->first_name),
             'last_name' => ucwords($employee->last_name),
             'email' => $employee->email,
-            'phone_number' => $employee->phone,
+            'unformatted_phone_number' => $employee->phone,
+            'formatted_phone_number' => formatPhone($employee->phone),
         ];
     }
 }

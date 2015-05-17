@@ -14,7 +14,8 @@ class CompanyDetailTransformer extends TransformerAbstract
             'state' => ucwords($detail->state->name),
             'country' => ucwords($detail->country),
             'zip_code' => $detail->zip_code,
-            'phone_number' => $detail->phone,
+            'unformatted_phone_number' => $detail->phone,
+            'formatted_phone_number' => formatPhone($detail->phone),
             'email' => $detail->email,
         ];
     }

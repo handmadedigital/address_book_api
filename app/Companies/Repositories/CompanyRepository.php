@@ -23,7 +23,7 @@ class CompanyRepository
      */
     public function getAll()
     {
-        return $this->model->get();
+        return $this->model->orderBy('name', 'ASC')->get();
     }
 
     public function getBySlug($slug)
@@ -45,6 +45,7 @@ class CompanyRepository
             'country' => $company->country,
             'zip_code' => $company->zip_code,
             'phone' => $company->phone_number,
+            'email' => $company->email
         ]);
 
         $this->model->detail()->save($details);

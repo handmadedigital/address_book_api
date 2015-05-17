@@ -9,8 +9,9 @@ class AddCompanyCommand extends Command
 	protected $zip_code;
 	protected $country;
 	protected $phone_number;
+	protected $email;
 
-	function __construct($name, $address = null, $city = null, $state = null, $zip_code = null, $country = 'usa', $phone_number = null)
+	function __construct($name, $address = null, $city = null, $state = null, $zip_code = null, $country = 'usa', $phone_number = null, $email = null)
 	{
 		$this->name = $name;
 		$this->address = $address;
@@ -19,6 +20,15 @@ class AddCompanyCommand extends Command
 		$this->zip_code = $zip_code;
 		$this->country = $country;
 		$this->phone_number = $phone_number;
+		$this->email = $email;
+	}
+
+	/**
+	 * @return null
+	 */
+	public function getEmail()
+	{
+		return $this->email;
 	}
 
 	/**
