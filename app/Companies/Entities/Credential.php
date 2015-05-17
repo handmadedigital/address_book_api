@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Credential extends Model
 {
+    protected $fillable = ['credential_option_id', 'credential_group_id', 'credential'];
+
     /*********************/
     /*
      * RELATIONSHIPS

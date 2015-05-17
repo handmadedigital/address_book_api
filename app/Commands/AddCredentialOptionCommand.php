@@ -1,17 +1,21 @@
 <?php namespace ThreeAccents\Commands;
 
-use ThreeAccents\Commands\Command;
+class AddCredentialOptionCommand extends Command
+{
 
-class AddCredentialOptionCommand extends Command {
+	protected $name;
+
+	function __construct($name)
+	{
+		$this->name = $name;
+	}
 
 	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
+	 * @return mixed
 	 */
-	public function __construct()
+	public function getName()
 	{
-		//
+		return $this->name;
 	}
 
 }
