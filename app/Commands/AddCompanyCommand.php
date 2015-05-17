@@ -10,7 +10,7 @@ class AddCompanyCommand extends Command
 	protected $country;
 	protected $phone_number;
 
-	function __construct($name, $address, $city, $state, $zip_code, $country = 'usa', $phone_number)
+	function __construct($name, $address = null, $city = null, $state = null, $zip_code = null, $country = 'usa', $phone_number = null)
 	{
 		$this->name = $name;
 		$this->address = $address;

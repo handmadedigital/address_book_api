@@ -40,8 +40,8 @@ class CompanyRepository
 
         $details = new CompanyDetail([
             'address' => $company->address,
-            'city_id' => $company->city,
-            'state_id' => $company->state,
+            'city' => $company->city,
+            'state_id' => 15,
             'country' => $company->country,
             'zip_code' => $company->zip_code,
             'phone' => $company->phone_number,

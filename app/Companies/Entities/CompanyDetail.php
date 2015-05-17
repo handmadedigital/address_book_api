@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompanyDetail extends Model
 {
 
-	protected $fillable = ['company_id', 'address', 'city_id', 'state_id', 'country', 'zip_code', 'phone'];
+	protected $fillable = ['company_id', 'address', 'city', 'state_id', 'country', 'zip_code', 'phone'];
 
 
 	/*********************/

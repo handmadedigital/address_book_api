@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
+use ThreeAccents\Commands\AddCredentialCommand;
 use ThreeAccents\Commands\AddCredentialGroupCommand;
 use ThreeAccents\Commands\AddCredentialOptionCommand;
 use ThreeAccents\Companies\Entities\CredentialOption;
@@ -9,6 +10,7 @@ use ThreeAccents\Companies\Services\CompanyService;
 use ThreeAccents\Http\Controllers\ApiController;
 use ThreeAccents\Http\Requests\AddCredentialGroupRequest;
 use ThreeAccents\Http\Requests\AddCredentialOptionRequest;
+use ThreeAccents\Http\Requests\AddCredentialRequest;
 use ThreeAccents\Http\Transformers\CredentialGroupTransformer;
 use ThreeAccents\Http\Transformers\CredentialOptionTransformer;
 
@@ -61,6 +63,15 @@ class CredentialController extends ApiController
 
         return $this->respondWithArray([
             'message' => 'Credential option was added'
+        ]);
+    }
+
+    public function postAddCredential(AddCredentialRequest $request)
+    {
+        $this->dispatchFrom(AddCredentialCommand::class, $request);
+
+        return $this->respondWithArray([
+            'message' => 'Credential was added'
         ]);
     }
 }
