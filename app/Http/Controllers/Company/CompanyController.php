@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
 use ThreeAccents\Commands\AddCompanyCommand;
+use ThreeAccents\Commands\AddEmployeeCommand;
 use ThreeAccents\Companies\Services\CompanyService;
 use ThreeAccents\Http\Controllers\ApiController;
 use ThreeAccents\Http\Requests\AddCompanyRequest;
+use ThreeAccents\Http\Requests\AddEmployeeRequest;
 use ThreeAccents\Http\Requests\CompanyRequest;
 use ThreeAccents\Http\Transformers\CompanyTransformer;
 
@@ -66,5 +68,15 @@ class CompanyController extends ApiController
         return $this->respondWithArray([
             'message' => 'Company was added!'
         ]);
+    }
+
+    public function postAddEmployee(AddEmployeeRequest $request)
+    {
+       $this->dispatchFrom(AddEmployeeCommand::class, $request);
+
+        return $this->respondWithArray([
+            'message' => 'Employee was added!'
+        ]);
+
     }
 }
