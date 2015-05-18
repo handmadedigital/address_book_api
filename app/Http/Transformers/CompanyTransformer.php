@@ -46,7 +46,7 @@ class CompanyTransformer extends TransformerAbstract
     {
         $credential_group = $company->credentialGroup;
 
-        return $this->collection($credential_group, new CredentialGroupTransformer, 'credentialGroups');
+        return $this->collection($credential_group, new CredentialGroupTransformer, 'credential_groups');
     }
 
     /**

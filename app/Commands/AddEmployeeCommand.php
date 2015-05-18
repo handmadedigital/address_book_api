@@ -10,7 +10,7 @@ class AddEmployeeCommand extends Command
 	protected $email;
 	protected $phone;
 
-	function __construct($company_id, $first_name, $last_name, $email, $phone)
+	function __construct($company_id, $first_name, $last_name = null, $email = null, $phone = null)
 	{
 		$this->company_id = $company_id;
 		$this->first_name = $first_name;
