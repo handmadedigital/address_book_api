@@ -44,9 +44,9 @@ class CompanyTransformer extends TransformerAbstract
      */
     public function includeCredentialGroups(Company $company)
     {
-        $credential_group = $company->credentialGroup;
+        $credential_groups = $company->credentialGroups;
 
-        return $this->collection($credential_group, new CredentialGroupTransformer, 'credential_groups');
+        return $this->collection($credential_groups, new CredentialGroupTransformer, 'credential_groups');
     }
 
     /**

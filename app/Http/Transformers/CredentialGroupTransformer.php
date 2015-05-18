@@ -28,7 +28,7 @@ class CredentialGroupTransformer extends TransformerAbstract
      */
     public function includeCredentials(CredentialGroup $group)
     {
-        $credentials = $group->credentials;
+        $credentials = $group->load('credentials')->credentials;
 
         return $this->collection($credentials, new CredentialTransformer, 'credentials');
     }

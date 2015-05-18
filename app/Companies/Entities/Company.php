@@ -37,7 +37,7 @@ class Company extends Model
 		return $this->hasMany('ThreeAccents\Companies\Entities\Employee');
 	}
 
-	public function credentialGroup()
+	public function credentialGroups()
 	{
 		return $this->hasMany('ThreeAccents\Companies\Entities\CredentialGroup');
 	}

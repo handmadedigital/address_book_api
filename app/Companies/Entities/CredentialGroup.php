@@ -15,4 +15,5 @@ class CredentialGroup extends Model
 		return $this->hasMany('ThreeAccents\Companies\Entities\Credential');
 	}
 
+
 }

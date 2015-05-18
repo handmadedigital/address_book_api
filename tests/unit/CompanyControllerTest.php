@@ -37,6 +37,7 @@ class CompanyControllerTest extends TestCase
         if(strpos($response, 'detail')) $contains_detail = true;
 
         $this->assertEquals(true, $contains_detail);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function test_company_collection_with_company_employees()
@@ -48,6 +49,7 @@ class CompanyControllerTest extends TestCase
         if(strpos($response, 'employees')) $contains_employees = true;
 
         $this->assertEquals(true, $contains_employees);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function test_company_collection_with_company_credentials_groups()
@@ -70,6 +72,7 @@ class CompanyControllerTest extends TestCase
         if(strpos($response, 'credentials')) $contains_credential_groups_credentials = true;
 
         $this->assertEquals(true, $contains_credential_groups_credentials);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function test_company_returns_all_its_relationships()
@@ -81,6 +84,7 @@ class CompanyControllerTest extends TestCase
         if(strpos($response, 'detail') and strpos($response, 'employees') and strpos($response, 'credential_groups') and strpos($response, 'credentials')) $contains_all_relationships = true;
 
         $this->assertEquals(true, $contains_all_relationships);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
 

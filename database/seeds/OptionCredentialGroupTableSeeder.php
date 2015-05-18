@@ -11,11 +11,15 @@ class OptionCredentialGroupTableSeeder extends AbstractSeeder
         $groups = ['host', 'cPanel', 'website', 'gmail', 'ftp'];
 
 
-        foreach($groups as $group)
+        for($c = 1; $c <= 8; $c++)
         {
-            DB::table('credential_groups')->insert([
-                'name' => $group
-            ]);
+            foreach($groups as $group)
+            {
+                DB::table('credential_groups')->insert([
+                    'company_id' => $c,
+                    'name' => $group
+                ]);
+            }
         }
 
     }

@@ -12,11 +12,6 @@ class CredentialOption extends Model
      */
     /*********************/
 
-    public function group()
-    {
-        return $this->belongsTo('ThreeAccents\Companies\Entities\CredentialOptionGroup');
-    }
-
     public function credentials()
     {
         return $this->hasMany('ThreeAccents\Companies\Entities\Credential');

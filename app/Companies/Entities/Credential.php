@@ -23,12 +23,12 @@ class Credential extends Model
      */
     /*********************/
 
-    public function option()
+    public function credentialOption()
     {
         return $this->belongsTo('ThreeAccents\Companies\Entities\CredentialOption');
     }
 
-    public function group()
+    public function credentialGroup()
     {
         return $this->belongsTo('ThreeAccents\Companies\Entities\CredentialGroup');
     }
