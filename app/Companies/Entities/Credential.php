@@ -4,7 +4,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Credential extends Model
 {
-    protected $fillable = ['credential_option_id', 'credential_group_id', 'credential'];
+    protected $fillable = ['credential_option_id', 'credential_group_id', 'credential', 'company_id'];
+
+    /*********************/
+    /*
+     * COMMANDS
+     */
+    /*********************/
+
+    public static function add($company_id, $credential_group_id, $credential_option_id, $credential)
+    {
+        return new static(compact('company_id', 'credential_group_id', 'credential_option_id', 'credential'));
+    }
 
     /*********************/
     /*

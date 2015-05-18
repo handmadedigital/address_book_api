@@ -4,17 +4,21 @@ use ThreeAccents\Commands\AddCredentialCommand;
 
 use Illuminate\Queue\InteractsWithQueue;
 use ThreeAccents\Companies\Entities\Credential;
+use ThreeAccents\Companies\Repositories\CredentialRepository;
 
-class AddCredentialCommandHandler {
+class AddCredentialCommandHandler
+{
+	/**
+	 * @var CredentialRepository
+	 */
+	protected $credentialRepo;
 
 	/**
-	 * Create the command handler.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+	 * @param CredentialRepository $credentialRepo
+     */
+	function __construct(CredentialRepository $credentialRepo)
 	{
-		//
+		$this->credentialRepo = $credentialRepo;
 	}
 
 	/**
@@ -25,11 +29,9 @@ class AddCredentialCommandHandler {
 	 */
 	public function handle(AddCredentialCommand $command)
 	{
-		Credential::create([
-			'credential_option_id' => $command->getOption(),
-			'credential_group_id' => $command->getGroup(),
-			'credential' => $command->getCredential()
-		]);
+		$credential = Credential::add($command->getCompanyId(), $command->getGroup(), $command->getOption(), $command->getCredential());
+
+		$this->credentialRepo->add($credential);
 	}
 
 }

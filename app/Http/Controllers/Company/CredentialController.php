@@ -41,7 +41,7 @@ class CredentialController extends ApiController
 
         $this->fractal->parseIncludes($includes);
 
-        $credential_options = CredentialOption::all();
+        $credential_options = $this->credentialService->getCredentialOptions();
 
         return  $this->respondWithCollection($credential_options, new CredentialOptionTransformer, 'credential_options');
     }
