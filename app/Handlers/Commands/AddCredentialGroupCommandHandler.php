@@ -17,7 +17,6 @@ class AddCredentialGroupCommandHandler
 	public function handle(AddCredentialGroupCommand $command)
 	{
 		CredentialGroup::create([
-			'company_id' => $command->getCompanyId(),
 			'name' => $command->getName()
 		]);
 	}

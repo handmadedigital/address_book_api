@@ -27,7 +27,7 @@ class AddCredentialOptionCommandHandler {
 	{
 		CredentialOption::create([
 			'name' => $command->getName(),
-			'slug' => $this->sluggify($command->getName())
+			'slug' => $this->sluggify($command->getName()).rand(10000,99999)
 		]);
 	}
 

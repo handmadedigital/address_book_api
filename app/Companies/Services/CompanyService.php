@@ -34,18 +34,4 @@ class CompanyService
     {
         return $this->companyRepo->getBySlug($slug);
     }
-
-    /**
-     * @param $slug
-     * @return mixed
-     * @throws CompanyNoFoundException
-     */
-    public function getGroups($slug)
-    {
-        $company = $this->companyRepo->getBySlug($slug);
-
-        if( ! $company) throw new CompanyNoFoundException;
-
-        return $company->credentialGroup;
-    }
 }

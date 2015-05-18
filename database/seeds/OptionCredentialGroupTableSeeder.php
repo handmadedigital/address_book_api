@@ -8,17 +8,15 @@ class OptionCredentialGroupTableSeeder extends AbstractSeeder
     {
         DB::table('credential_groups')->truncate();
 
-        $groups = ['host', 'cPanel', 'website'];
+        $groups = ['host', 'cPanel', 'website', 'gmail', 'ftp'];
 
-        for($c = 1; $c <= 8; $c++)
+
+        foreach($groups as $group)
         {
-            foreach($groups as $group)
-            {
-                DB::table('credential_groups')->insert([
-                    'company_id' => $c,
-                    'name' => $group
-                ]);
-            }
+            DB::table('credential_groups')->insert([
+                'name' => $group
+            ]);
         }
+
     }
 }

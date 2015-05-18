@@ -3,12 +3,10 @@
 class AddCredentialGroupCommand extends Command {
 
 	protected $name;
-	protected $company_id;
 
-	function __construct($name, $company_id)
+	function __construct($name)
 	{
 		$this->name = $name;
-		$this->company_id = $company_id;
 	}
 
 	/**
@@ -17,14 +15,6 @@ class AddCredentialGroupCommand extends Command {
 	public function getName()
 	{
 		return $this->name;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCompanyId()
-	{
-		return $this->company_id;
 	}
 
 }

@@ -6,7 +6,7 @@ use ThreeAccents\Commands\AddCredentialCommand;
 use ThreeAccents\Commands\AddCredentialGroupCommand;
 use ThreeAccents\Commands\AddCredentialOptionCommand;
 use ThreeAccents\Companies\Entities\CredentialOption;
-use ThreeAccents\Companies\Services\CompanyService;
+use ThreeAccents\Companies\Services\CredentialService;
 use ThreeAccents\Http\Controllers\ApiController;
 use ThreeAccents\Http\Requests\AddCredentialGroupRequest;
 use ThreeAccents\Http\Requests\AddCredentialOptionRequest;
@@ -16,26 +16,26 @@ use ThreeAccents\Http\Transformers\CredentialOptionTransformer;
 
 class CredentialController extends ApiController
 {
-    protected $companyService;
+    protected $credentialService;
 
-    function __construct(CompanyService $companyService, Manager $fractal)
+    function __construct(CredentialService $credentialService, Manager $fractal)
     {
-        $this->companyService = $companyService;
+        $this->credentialService = $credentialService;
         $this->fractal = $fractal;
     }
 
-    public function getCredentialGroups($company_slug)
+    public function getCredentialGroups()
     {
         $includes = Input::get('includes') ?: "";
 
         $this->fractal->parseIncludes($includes);
 
-        $credential_groups = $this->companyService->getGroups($company_slug);
+        $credential_groups = $this->credentialService->getCredentialGroups();
 
         return  $this->respondWithCollection($credential_groups, new CredentialGroupTransformer, 'credentialGroups');
     }
 
-    public function getCredentialOptions($company_slug)
+    public function getCredentialOptions()
     {
         $includes = Input::get('includes') ?: "";
 
@@ -43,14 +43,12 @@ class CredentialController extends ApiController
 
         $credential_options = CredentialOption::all();
 
-        return  $this->respondWithCollection($credential_options, new CredentialOptionTransformer);
+        return  $this->respondWithCollection($credential_options, new CredentialOptionTransformer, 'credential_options');
     }
 
     public function postAddCredentialGroup(AddCredentialGroupRequest $request)
     {
-        $company = $this->companyService->getCompany($request->company_slug);
-
-        $this->dispatch(new AddCredentialGroupCommand($request->name, $company->id));
+        $this->dispatchFrom(AddCredentialGroupCommand::class, $request);
 
         return $this->respondWithArray([
             'message' => 'Credential group was added'

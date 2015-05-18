@@ -34,7 +34,7 @@ class CompanyRepository
     public function persist($company)
     {
         $this->model->name = $company->name;
-        $this->model->slug = $this->sluggify($company->name);
+        $this->model->slug = $this->sluggify($company->name).rand(10000,99999);
 
         $this->model->save();
 
