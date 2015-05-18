@@ -4,17 +4,16 @@ use ThreeAccents\Commands\AddEmployeeCommand;
 
 use Illuminate\Queue\InteractsWithQueue;
 use ThreeAccents\Companies\Entities\Employee;
+use ThreeAccents\Companies\Repositories\EmployeeRepository;
 
-class AddEmployeeCommandHandler {
+class AddEmployeeCommandHandler
+{
 
-	/**
-	 * Create the command handler.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+	protected $employeeRepo;
+
+	function __construct(EmployeeRepository $employeeRepo)
 	{
-		//
+		$this->employeeRepo = $employeeRepo;
 	}
 
 	/**
@@ -25,13 +24,9 @@ class AddEmployeeCommandHandler {
 	 */
 	public function handle(AddEmployeeCommand $command)
 	{
-		Employee::create([
-			'company_id' => $command->getCompanyId(),
-			'first_name' => $command->getFirstName(),
-			'last_name' => $command->getLastName(),
-			'email' => $command->getEmail(),
-			'phone' => $command->getPhone()
-		]);
+		$employee = Employee::add($command->getCompanyId(), $command->getFirstName(), $command->getLastName(), $command->getEmail(), $command->getPhone());
+
+		$this->employeeRepo->add($employee);
 	}
 
 }

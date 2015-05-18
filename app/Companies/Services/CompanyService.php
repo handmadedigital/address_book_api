@@ -26,11 +26,20 @@ class CompanyService
         return $this->companyRepo->getAll();
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function getCompany($slug)
     {
         return $this->companyRepo->getBySlug($slug);
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     * @throws CompanyNoFoundException
+     */
     public function getGroups($slug)
     {
         $company = $this->companyRepo->getBySlug($slug);

@@ -14,6 +14,17 @@ class Employee extends Model
 
     /*********************/
     /*
+     * COMMANDS
+     */
+    /*********************/
+
+    public static function add($company_id, $first_name, $last_name, $email, $phone)
+    {
+        return new static(compact('company_id', 'first_name', 'last_name', 'email', 'phone'));
+    }
+
+    /*********************/
+    /*
      * RELATIONSHIPS
      */
     /*********************/
