@@ -30,4 +30,9 @@ class CompanyDetail extends Model
 		return $this->belongsTo('ThreeAccents\Locations\Entities\State');
 	}
 
+	public function company()
+	{
+		return $this->belongsTo('ThreeAccents\Companies\Entities\Company');
+	}
+
 }

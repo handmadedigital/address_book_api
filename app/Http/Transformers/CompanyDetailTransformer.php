@@ -9,6 +9,7 @@ class CompanyDetailTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $detail->id,
+            'company_id' => (int) $detail->company->id,
             'address' => $detail->address,
             'city' => ucwords($detail->city),
             'state' => ucwords($detail->state->name),
